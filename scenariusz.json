@@ -1,0 +1,102 @@
+{
+  "game_title": "Ucieczka z Lochu",
+  "start_node_id": "cela",
+  "scenes": [
+    {
+      "id": "cela",
+      "text": "Budzisz się w zimnej celi. Widzisz solidne żelazne drzwi na północy. W rogu leży stary materac.",
+      "fallback_text": "Rozglądasz się bezradnie. W tej celi są tylko DRZWI i MATERAC. Skup się na nich.",
+      "options": [
+        {
+          "target_id": "korytarz",
+          "keywords": [
+            "otwórz",
+            "wyjdź",
+            "drzwi",
+            "przejdź"
+          ],
+          "negative_keywords": [
+            "nie",
+            "zostaw"
+          ],
+          "requirements": {
+            "has_item": "zardzewiały klucz"
+          },
+          "failure_text": "Szarpiesz za klamkę, ale drzwi są zamknięte na klucz."
+        },
+        {
+          "target_id": "przeszukanie_materaca",
+          "keywords": [
+            "materac",
+            "przeszukaj",
+            "podnieś",
+            "zobacz"
+          ],
+          "negative_keywords": [
+            "nie"
+          ],
+          "requirements": {
+            "not_has_state": "znaleziono_klucz"
+          },
+          "effects": {
+            "add_item": "zardzewiały klucz",
+            "set_state": {
+              "znaleziono_klucz": true
+            }
+          }
+        },
+        {
+          "target_id": "cela",
+          "keywords": [
+            "materac",
+            "przeszukaj"
+          ],
+          "requirements": {
+            "state_check": {
+              "znaleziono_klucz": true
+            }
+          },
+          "custom_text": "Już przeszukałeś materac. Nic więcej tam nie ma."
+        }
+      ],
+      "_x": 50,
+      "_y": 50
+    },
+    {
+      "id": "przeszukanie_materaca",
+      "text": "Podnosisz śmierdzący materac. Pod spodem znajdujesz zardzewiały klucz! Bierzesz go.",
+      "fallback_text": "Masz klucz, po prostu WRÓĆ do widoku celi.",
+      "options": [
+        {
+          "target_id": "cela",
+          "keywords": [
+            "ok",
+            "wstań",
+            "wróć",
+            "dalej",
+            "super"
+          ],
+          "negative_keywords": []
+        }
+      ],
+      "_x": 571,
+      "_y": 14
+    },
+    {
+      "id": "korytarz",
+      "text": "Udało się! Klucz pasował. Stoisz teraz w ciemnym korytarzu. Jesteś wolny (na razie). KONIEC DEMO.",
+      "fallback_text": "To już koniec gry, nic więcej tu nie zrobisz.",
+      "options": [],
+      "_x": 565,
+      "_y": 151
+    }
+  ],
+  "items": [
+    "zardzewiały klucz"
+  ],
+  "states": [
+    "znaleziono_klucz"
+  ],
+  "terminal_width": 80,
+  "terminal_height": 24
+}
