@@ -9,3 +9,5 @@ This project consists of two decoupled components:
 - The Python Engine: A lightweight, terminal-based game engine that reads the generated JSON and runs the game directly in your console.
 
 Because the scenario is saved as a clean, engine-agnostic JSON file, you can use the editor completely standalone and write your own game engine in any language or framework (Unity, Godot, React, C++, etc.).
+
+** Sorry, but the Editor is in Polish **
